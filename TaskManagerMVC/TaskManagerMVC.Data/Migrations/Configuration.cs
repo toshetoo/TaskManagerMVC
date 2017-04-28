@@ -19,13 +19,13 @@ namespace TaskManagerMVC.Data.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
             //
-            //    context.People.AddOrUpdate(
-            //      p => p.FullName,
-            //      new Person { FullName = "Andrew Peters" },
-            //      new Person { FullName = "Brice Lambson" },
-            //      new Person { FullName = "Rowan Miller" }
-            //    );
-            //
+            context.Users.AddOrUpdate(
+              p => p.Username,
+              new Models.User { Username = "Andrew Peters" },
+              new Models.User { Username = "Brice Lambson" },
+              new Models.User { Username = "Rowan Miller" }
+            );
+
         }
     }
 }
