@@ -9,7 +9,6 @@ namespace TaskManagerMVC.Models
     {
         public string Name { get; set; }
         public List<User> AssignedUSers { get; set; }
-
         public List<Task> Tasks { get; set; }
     }
 }
