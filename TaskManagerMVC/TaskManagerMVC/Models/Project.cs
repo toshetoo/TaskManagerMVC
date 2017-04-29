@@ -7,6 +7,7 @@ namespace TaskManagerMVC.Models
 {
     public class Project: BaseModel
     {
+        public string ProjectAdminID { get; set; }
         public string Name { get; set; }
         public List<User> AssignedUSers { get; set; }
         public List<Task> Tasks { get; set; }
