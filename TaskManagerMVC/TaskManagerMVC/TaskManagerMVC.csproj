@@ -156,6 +156,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AccountsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -167,12 +168,15 @@
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\AuthenticatonService.cs" />
+    <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
     <Compile Include="Services\ModelServices\ProjectsService.cs" />
     <Compile Include="Services\ModelServices\TasksService.cs" />
     <Compile Include="Services\ModelServices\UsersService.cs" />
     <Compile Include="TaskManagerContext.cs" />
     <Compile Include="Utils\HashUtils.cs" />
+    <Compile Include="ViewModels\AccountVM\AccountLoginVM.cs" />
+    <Compile Include="ViewModels\AccountVM\AccountRegisterVM.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
@@ -212,6 +216,9 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Accounts\Register.cshtml" />
+    <Content Include="Views\Accounts\Login.cshtml" />
+    <Content Include="Views\Accounts\Verify.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

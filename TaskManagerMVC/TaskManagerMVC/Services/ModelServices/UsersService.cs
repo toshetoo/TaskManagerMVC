@@ -18,5 +18,10 @@ namespace TaskManagerMVC.Services.ModelServices
         {
             return this.GetAll().FirstOrDefault(u => u.Username == username && HashUtils.VerifyPassword(password, u.Password));
         }
+
+        public User GetByGuid(string guid)
+        {
+            return GetAll().FirstOrDefault(u => u.Password == guid);
+        }
     }
 }
