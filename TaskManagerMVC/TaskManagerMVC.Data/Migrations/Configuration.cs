@@ -21,9 +21,7 @@ namespace TaskManagerMVC.Data.Migrations
             //
             context.Users.AddOrUpdate(
               p => p.Username,
-              new Models.User { Username = "Andrew Peters" },
-              new Models.User { Username = "Brice Lambson" },
-              new Models.User { Username = "Rowan Miller" }
+              new Models.User { Username = "admin", Password = "adminpass" }
             );
 
         }
