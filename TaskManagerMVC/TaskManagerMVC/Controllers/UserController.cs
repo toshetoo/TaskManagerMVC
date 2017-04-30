@@ -9,7 +9,7 @@ using TaskManagerMVC.ViewModels.UserVM;
 
 namespace TaskManagerMVC.Controllers
 {
-    public class UserController : Controller
+    public class UserController : BaseController
     {
         public ActionResult List()
         {

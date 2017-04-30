@@ -1,0 +1,76 @@
+﻿@model TaskManagerMVC.ViewModels.TaskVM.TaskListVM
+
+@{
+    ViewBag.Title = "List";
+}
+
+<h2>List</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+
+@using (Html.BeginForm("List", "Task", FormMethod.Get))
+{
+    <div>
+        Search: @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            Project
+        </th>
+        <th>
+            Author
+        </th>
+        <th>
+            Asignee
+        </th>
+        <th>
+            @Html.ActionLink("Title", "List", "Task", new RouteValueDictionary { { "SortOrder", Model.SortOrder == "title_desc" ? "title_asc" : "title_desc" }, { "Search", Model.Search } }, null)
+        </th>
+        <th>
+            Status
+        </th>
+        <th>
+            Content
+        </th>
+        <th>
+            Creation Date
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Tasks) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AuthorID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AsigneeID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Content)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreationDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

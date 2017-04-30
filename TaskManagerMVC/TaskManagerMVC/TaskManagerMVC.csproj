@@ -159,6 +159,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -181,6 +182,8 @@
     <Compile Include="ViewModels\AccountVM\AccountLoginVM.cs" />
     <Compile Include="ViewModels\AccountVM\AccountRegisterVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
+    <Compile Include="ViewModels\TaskVM\TaskEditVM.cs" />
+    <Compile Include="ViewModels\TaskVM\TaskListVM.cs" />
     <Compile Include="ViewModels\UserVM\UserEditVM.cs" />
     <Compile Include="ViewModels\UserVM\UserListVM.cs" />
   </ItemGroup>
@@ -227,10 +230,11 @@
     <Content Include="Views\Account\Verify.cshtml" />
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\List.cshtml" />
+    <Content Include="Views\Task\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Base\" />
+    <Folder Include="ViewModels\ProjectsVM\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

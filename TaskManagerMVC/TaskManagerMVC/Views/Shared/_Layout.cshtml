@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿@using TaskManagerMVC.Services;
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -19,13 +20,26 @@
                 @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                <ul class="nav navbar-nav">                    
+                    @if (AuthenticatonService.LoggedUser == null)
+                    {
+                        <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                        <li>@Html.ActionLink("About", "About", "Home")</li>
+                        <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                        <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    }
+                    else
+                    {
+                        <li>@Html.ActionLink("Users", "List", "User")</li>
+                        <li>@Html.ActionLink("Tasks", "List", "Task")</li>
+                        <li>@Html.ActionLink("Projects", "List", "Project")</li>                        
+                    }
                 </ul>
+                    @if (AuthenticatonService.LoggedUser != null)
+                    {
+                        <ul class="nav navbar-nav navbar-right"><li>@Html.ActionLink("Logout", "Logout", "Account")</li></ul>
+                    }
             </div>
         </div>
     </div>
