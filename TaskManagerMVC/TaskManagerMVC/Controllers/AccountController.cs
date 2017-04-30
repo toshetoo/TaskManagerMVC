@@ -6,11 +6,12 @@ using System.Web.Mvc;
 using TaskManagerMVC.Models;
 using TaskManagerMVC.Services;
 using TaskManagerMVC.Services.ModelServices;
+using TaskManagerMVC.Utils;
 using TaskManagerMVC.ViewModels.AccountVM;
 
 namespace TaskManagerMVC.Controllers
 {
-    public class AccountsController : Controller
+    public class AccountController : Controller
     {
         [ValidateAntiForgeryToken]
         public ActionResult Register()
@@ -67,7 +68,7 @@ namespace TaskManagerMVC.Controllers
 
             u.ID = model.ID;
             u.Username = model.Username;
-            u.Password = model.Password;
+            u.Password = HashUtils.CreateHashCode(model.Password);
             u.FirstName = model.FirstName;
             u.LastName = model.LastName;
             u.Email = model.Email;
