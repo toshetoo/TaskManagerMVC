@@ -18,7 +18,7 @@ namespace TaskManagerMVC.Services.ModelServices
             this.dbSet = context.Set<T>();
         }
 
-        public T GetById(int id)
+        public T GetById(string id)
         {
             return this.dbSet.Find(id);
         }
@@ -40,7 +40,7 @@ namespace TaskManagerMVC.Services.ModelServices
             this.context.SaveChanges();
         }
 
-        public void Delete(int id)
+        public void Delete(string id)
         {
             this.dbSet.Remove(GetById(id));
             this.context.SaveChanges();

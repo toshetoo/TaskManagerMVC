@@ -1,0 +1,58 @@
+﻿@model TaskManagerMVC.ViewModels.UserVM.UserListVM
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<p>
+    @Html.ActionLink("Create New", "Edit")
+</p>
+
+@using (Html.BeginForm("List", "Users", FormMethod.Get))
+{
+    <div>
+        Search: @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
+        <input type="submit" value="Search" class="btn btn-primary" />
+    </div>
+}
+<table class="table">
+    <tr>
+        <th>
+            @Html.ActionLink("First Name", "List", "Users", new RouteValueDictionary { { "SortOrder", Model.SortOrder == "firstname_desc" ? "firstname_asc" : "firstname_desc" }, { "Search", Model.Search } }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Last name", "List", "Users", new RouteValueDictionary { { "SortOrder", Model.SortOrder == "lastname_desc" ? "lastname_asc" : "lastname_desc" }, { "Search", Model.Search } }, null)
+        </th>
+        <th>
+            @Html.ActionLink("Username", "List", "Users", new RouteValueDictionary { { "SortOrder", Model.SortOrder == "username_desc" ? "username_asc" : "username_desc" }, { "Search", Model.Search } }, null)
+        </th>
+        <th>
+            Email
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Users)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
