@@ -17,7 +17,5 @@ namespace TaskManagerMVC
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Models.Task> Tasks { get; set; }
-
-        public System.Data.Entity.DbSet<TaskManagerMVC.ViewModels.AccountVM.AccountRegisterVM> AccountRegisterVMs { get; set; }
     }
 }

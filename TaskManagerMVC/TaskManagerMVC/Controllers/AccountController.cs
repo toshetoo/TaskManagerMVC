@@ -13,7 +13,6 @@ namespace TaskManagerMVC.Controllers
 {
     public class AccountController : Controller
     {
-        [ValidateAntiForgeryToken]
         public ActionResult Register()
         {
             AccountRegisterVM model = new AccountRegisterVM();
@@ -30,6 +29,7 @@ namespace TaskManagerMVC.Controllers
             User u = new User();
             UsersService usersService = new UsersService();
 
+            u.ID = Guid.NewGuid().ToString();
             u.Username = model.Username;
             u.Password = model.Password;
             u.FirstName = model.FirstName;

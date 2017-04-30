@@ -18,7 +18,7 @@ namespace TaskManagerMVC.Services
             mail.Body = "Hello " + u.FirstName + Environment.NewLine
                 + "Thank you for registering. Confirm your registration by visiting the following link: "
                 + Environment.NewLine
-                + "http://localhost:" + HttpContext.Current.Request.Url.Port + "/Accounts/Verify?guid=" + u.Password;
+                + "http://localhost:" + HttpContext.Current.Request.Url.Port + "/Account/Verify?guid=" + u.Password;
 
             SmtpClient smtp = new SmtpClient("smtp.gmail.com", 587);
             smtp.EnableSsl = true;
