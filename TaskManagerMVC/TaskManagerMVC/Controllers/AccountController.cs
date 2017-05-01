@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using TaskManagerMVC.Filters;
 using TaskManagerMVC.Models;
 using TaskManagerMVC.Services;
 using TaskManagerMVC.Services.ModelServices;
@@ -75,6 +76,26 @@ namespace TaskManagerMVC.Controllers
 
             usersService.Update(u);
             return RedirectToAction("Login");
+        }
+
+        public ActionResult ResetPassword()
+        {    
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ResetPassword(string email)
+        {
+            UsersService service = new UsersService();
+            User user = service.GetAll().FirstOrDefault(u => u.Email == email);
+            user.Password = Guid.NewGuid().ToString();
+
+            service.Update(user);
+            ViewBag.Message = "Email with instructions has been sent!";
+
+            EmailService.SendPasswordResetEmail(user);
+
+            return View();
         }
         public ActionResult Login(string RedirectUrl)
         {
