@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -56,6 +57,7 @@ namespace TaskManagerMVC.Controllers
             model.ProjectID = task.ProjectID;
             model.CreationDate = task.CreationDate;
             model.Content = task.Content;
+            model.ImageURL = task.ImageURL;
             model.AsigneeID = task.AsigneeID;
 
             return View(model);
@@ -86,6 +88,26 @@ namespace TaskManagerMVC.Controllers
                 {
                     return RedirectToAction("List");
                 }
+            }
+
+            if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+            {
+                var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
+
+                if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong image format.");
+                }
+                else
+                {
+                    string filePath = Server.MapPath("~/Uploads/");
+                    model.ImageURL = model.ImageUpload.FileName;
+                    model.ImageUpload.SaveAs(filePath + model.ImageURL);
+                }
+            }
+            else
+            {
+                model.ImageURL = "default.jpg";
             }
 
             task.ID = model.ID;

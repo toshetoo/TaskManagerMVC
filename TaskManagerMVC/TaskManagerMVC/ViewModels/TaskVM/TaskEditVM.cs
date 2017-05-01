@@ -25,5 +25,7 @@ namespace TaskManagerMVC.ViewModels.TaskVM
 
         [Display(Name = "Creation date")]
         public string CreationDate { get; set; }
+        public string ImageURL { get; set; }
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

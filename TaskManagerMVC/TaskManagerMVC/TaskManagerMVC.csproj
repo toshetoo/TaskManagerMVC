@@ -231,9 +231,11 @@
     <Content Include="Views\User\Edit.cshtml" />
     <Content Include="Views\User\List.cshtml" />
     <Content Include="Views\Task\List.cshtml" />
+    <Content Include="Views\Task\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Uploads\" />
     <Folder Include="ViewModels\ProjectsVM\" />
   </ItemGroup>
   <ItemGroup>
