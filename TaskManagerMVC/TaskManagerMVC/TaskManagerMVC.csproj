@@ -158,6 +158,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -167,6 +168,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\Task.cs" />
     <Compile Include="Models\User.cs" />
@@ -174,6 +176,7 @@
     <Compile Include="Services\AuthenticatonService.cs" />
     <Compile Include="Services\EmailService.cs" />
     <Compile Include="Services\ModelServices\BaseService.cs" />
+    <Compile Include="Services\ModelServices\CommentsService.cs" />
     <Compile Include="Services\ModelServices\ProjectsService.cs" />
     <Compile Include="Services\ModelServices\TasksService.cs" />
     <Compile Include="Services\ModelServices\UsersService.cs" />
@@ -181,6 +184,7 @@
     <Compile Include="Utils\HashUtils.cs" />
     <Compile Include="ViewModels\AccountVM\AccountLoginVM.cs" />
     <Compile Include="ViewModels\AccountVM\AccountRegisterVM.cs" />
+    <Compile Include="ViewModels\Comments\CommentEditVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
     <Compile Include="ViewModels\TaskVM\TaskEditVM.cs" />
     <Compile Include="ViewModels\TaskVM\TaskListVM.cs" />
@@ -240,6 +244,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
     <Folder Include="ViewModels\ProjectsVM\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

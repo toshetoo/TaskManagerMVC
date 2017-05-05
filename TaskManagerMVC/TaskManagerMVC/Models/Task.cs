@@ -16,6 +16,8 @@ namespace TaskManagerMVC.Models
         public string CreationDate { get; set; }
 
         public string ImageURL { get; set; }
+
+        public List<Comment> Comments { get; set; }
     }
 
     public enum TaskStatus

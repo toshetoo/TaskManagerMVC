@@ -17,5 +17,7 @@ namespace TaskManagerMVC
         public DbSet<User> Users { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Models.Task> Tasks { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
     }
 }
