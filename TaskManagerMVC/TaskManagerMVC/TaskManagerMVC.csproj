@@ -160,6 +160,7 @@
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Controllers\TaskController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\AuthenticationFilter.cs" />
@@ -186,6 +187,8 @@
     <Compile Include="ViewModels\AccountVM\AccountRegisterVM.cs" />
     <Compile Include="ViewModels\Comments\CommentEditVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
+    <Compile Include="ViewModels\ProjectsVM\ProjectEditVM.cs" />
+    <Compile Include="ViewModels\ProjectsVM\ProjectListVM.cs" />
     <Compile Include="ViewModels\TaskVM\TaskEditVM.cs" />
     <Compile Include="ViewModels\TaskVM\TaskListVM.cs" />
     <Compile Include="ViewModels\UserVM\UserEditVM.cs" />
@@ -243,8 +246,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="ViewModels\ProjectsVM\" />
     <Folder Include="Views\Comments\" />
+    <Folder Include="Views\Projects\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
