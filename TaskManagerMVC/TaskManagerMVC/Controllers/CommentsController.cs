@@ -12,6 +12,14 @@ namespace TaskManagerMVC.Controllers
     public class CommentsController : Controller
     {       
 
+        public ActionResult List(string taskID)
+        {
+            CommentListVM model = new CommentListVM();
+            model.Comments = new CommentsService().GetAll().Where(c => c.TaskID == taskID).ToList();
+
+            return View(model);
+        }
+
         public ActionResult Edit(string id)
         {
             Comment comment = new Comment();

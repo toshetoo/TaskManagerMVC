@@ -186,6 +186,7 @@
     <Compile Include="ViewModels\AccountVM\AccountLoginVM.cs" />
     <Compile Include="ViewModels\AccountVM\AccountRegisterVM.cs" />
     <Compile Include="ViewModels\Comments\CommentEditVM.cs" />
+    <Compile Include="ViewModels\Comments\CommentListVM.cs" />
     <Compile Include="ViewModels\ListVM.cs" />
     <Compile Include="ViewModels\ProjectsVM\ProjectEditVM.cs" />
     <Compile Include="ViewModels\ProjectsVM\ProjectListVM.cs" />
@@ -242,11 +243,11 @@
     <Content Include="Views\Task\List.cshtml" />
     <Content Include="Views\Task\Edit.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Views\Comments\List.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Uploads\" />
-    <Folder Include="Views\Comments\" />
     <Folder Include="Views\Projects\" />
   </ItemGroup>
   <ItemGroup>

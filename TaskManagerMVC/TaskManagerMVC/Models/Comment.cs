@@ -7,6 +7,7 @@ namespace TaskManagerMVC.Models
 {
     public class Comment: BaseModel
     {
+        public string TaskID { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }
         public string CreatorID { get; set; }
