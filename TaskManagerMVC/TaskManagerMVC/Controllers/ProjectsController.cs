@@ -53,7 +53,7 @@ namespace TaskManagerMVC.Controllers
 
             model.ID = project.ID;
             model.Name = project.Name;
-            model.AssignedUSers = project.AssignedUSers;
+            model.AssignedUSers = project.AssignedUsers;
             model.ProjectAdminID = project.ProjectAdminID;
             model.Tasks = project.Tasks;
 
@@ -110,7 +110,7 @@ namespace TaskManagerMVC.Controllers
             project.ID = model.ID;
             project.Name = model.Name;
             project.ProjectAdminID = model.ProjectAdminID;
-            project.AssignedUSers = model.AssignedUSers;
+            project.AssignedUsers = model.AssignedUSers;
             project.Tasks = model.Tasks;
 
             projectsService.Update(project);

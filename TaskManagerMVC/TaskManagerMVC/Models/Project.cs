@@ -9,7 +9,7 @@ namespace TaskManagerMVC.Models
     {
         public string ProjectAdminID { get; set; }
         public string Name { get; set; }
-        public List<User> AssignedUSers { get; set; }
-        public List<Task> Tasks { get; set; }
+        public virtual List<User> AssignedUsers { get; set; }
+        public virtual List<Task> Tasks { get; set; }
     }
 }
