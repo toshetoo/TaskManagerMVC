@@ -1,0 +1,33 @@
+﻿@model TaskManagerMVC.ViewModels.ProjectsVM.ProjectListVM
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            Project Admin
+        </th>
+        <th>
+            Name
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model.Projects) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProjectAdmin.FirstName) @Html.DisplayFor(modelItem => item.ProjectAdmin.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

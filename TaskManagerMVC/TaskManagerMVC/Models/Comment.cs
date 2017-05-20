@@ -12,5 +12,8 @@ namespace TaskManagerMVC.Models
         public string Content { get; set; }
         public string CreatorID { get; set; }
         public string CreationDate { get; set; }
+
+        public virtual User Creator { get; set; }
+        public virtual Task Task { get; set; }
     }
 }

@@ -19,5 +19,7 @@ namespace TaskManagerMVC
         public DbSet<Models.Task> Tasks { get; set; }
 
         public DbSet<Comment> Comments { get; set; }
+
+        public System.Data.Entity.DbSet<TaskManagerMVC.ViewModels.ProjectsVM.ProjectEditVM> ProjectEditVMs { get; set; }
     }
 }

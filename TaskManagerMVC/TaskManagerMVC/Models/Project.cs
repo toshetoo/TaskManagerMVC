@@ -11,5 +11,7 @@ namespace TaskManagerMVC.Models
         public string Name { get; set; }
         public virtual List<User> AssignedUsers { get; set; }
         public virtual List<Task> Tasks { get; set; }
+
+        public virtual User ProjectAdmin { get; set; }
     }
 }

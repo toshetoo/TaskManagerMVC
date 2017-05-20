@@ -9,7 +9,7 @@ namespace TaskManagerMVC.Models
     {
         public string ProjectID { get; set; }
         public string AuthorID { get; set; }
-        public string AsigneeID { get; set; }
+        public string AssigneeID { get; set; }
         public string Title { get; set; }
         public TaskStatus Status { get; set; }
         public string Content { get; set; }
@@ -18,6 +18,9 @@ namespace TaskManagerMVC.Models
         public string ImageURL { get; set; }
 
         public virtual List<Comment> Comments { get; set; }
+        public virtual Project Project { get; set; }
+        public virtual User Author { get; set; }
+        public virtual User Assignee { get; set; }
     }
 
     public enum TaskStatus

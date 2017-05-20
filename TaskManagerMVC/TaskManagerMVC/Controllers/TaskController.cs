@@ -58,7 +58,7 @@ namespace TaskManagerMVC.Controllers
             model.CreationDate = task.CreationDate;
             model.Content = task.Content;
             model.ImageURL = task.ImageURL;
-            model.AsigneeID = task.AsigneeID;
+            model.AsigneeID = task.AssigneeID;
 
             return View(model);
         }
@@ -116,7 +116,7 @@ namespace TaskManagerMVC.Controllers
             task.ProjectID = model.ProjectID;
             task.CreationDate = model.CreationDate;
             task.Content = model.Content;
-            task.AsigneeID = model.AsigneeID;
+            task.AssigneeID = model.AsigneeID;
 
             tasksService.Update(task);
 

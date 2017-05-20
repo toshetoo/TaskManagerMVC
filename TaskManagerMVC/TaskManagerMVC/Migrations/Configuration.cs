@@ -22,6 +22,9 @@ namespace TaskManagerMVC.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
 
+            context.Database.Delete();
+            context.Database.Create();
+
             //USERS
             User admin = new User() { FirstName = "Admin", LastName = "Admin", Email = "admin@taskmanager.com", Username = "admin", Password = HashUtils.CreateHashCode("adminpass"), IsAdmin = true, ID = Guid.NewGuid().ToString() };
             User user = new User() { FirstName = "User", LastName = "User", Email = "user@taskmanager.com", Username = "user", Password = HashUtils.CreateHashCode("pass"), IsAdmin = false, ID = Guid.NewGuid().ToString() };
@@ -49,22 +52,16 @@ namespace TaskManagerMVC.Migrations
             jobsProj.AssignedUsers = new List<User>() { peter, james, victor };
 
             //TASKS
-            Task task1 = new Task() { ID = Guid.NewGuid().ToString(), AsigneeID = peter.ID, AuthorID = gery.ID, ProjectID = jobsProj.ID, Title = "Task1", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = ""};
+            Task task1 = new Task() { ID = Guid.NewGuid().ToString(), AssigneeID = peter.ID, AuthorID = gery.ID, ProjectID = jobsProj.ID, Title = "Task1", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = ""};
             task1.Comments = new List<Comment>() { comm1 };
-            Task task2 = new Task() { ID = Guid.NewGuid().ToString(), AsigneeID = dancho.ID, AuthorID = peter.ID, ProjectID = jobsProj.ID, Title = "Task2", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = ""};
+            Task task2 = new Task() { ID = Guid.NewGuid().ToString(), AssigneeID = dancho.ID, AuthorID = peter.ID, ProjectID = jobsProj.ID, Title = "Task2", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = ""};
             task2.Comments = new List<Comment>() { comm2 };
-            Task task3 = new Task() { ID = Guid.NewGuid().ToString(), AsigneeID = hans.ID, AuthorID = minko.ID, ProjectID = jobsProj.ID, Title = "Task3", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
+            Task task3 = new Task() { ID = Guid.NewGuid().ToString(), AssigneeID = hans.ID, AuthorID = minko.ID, ProjectID = jobsProj.ID, Title = "Task3", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
             task3.Comments = new List<Comment>() { comm3 };
-            Task task4 = new Task() { ID = Guid.NewGuid().ToString(), AsigneeID = totko.ID, AuthorID = james.ID, ProjectID = jobsProj.ID, Title = "Task4", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
+            Task task4 = new Task() { ID = Guid.NewGuid().ToString(), AssigneeID = totko.ID, AuthorID = james.ID, ProjectID = jobsProj.ID, Title = "Task4", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
             task4.Comments = new List<Comment>() { comm4 };
-            Task task5 = new Task() { ID = Guid.NewGuid().ToString(), AsigneeID = gery.ID, AuthorID = victor.ID, ProjectID = jobsProj.ID, Title = "Task5", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
+            Task task5 = new Task() { ID = Guid.NewGuid().ToString(), AssigneeID = gery.ID, AuthorID = victor.ID, ProjectID = jobsProj.ID, Title = "Task5", Status = TaskStatus.TODO, Content = "TASK CONTENT", CreationDate = DateTime.Now.ToString(), ImageURL = "" };
             task5.Comments = new List<Comment>() { comm5 };
-
-            comm1.TaskID = task1.ID;
-            comm2.TaskID = task2.ID;
-            comm3.TaskID = task3.ID;
-            comm4.TaskID = task4.ID;
-            comm5.TaskID = task5.ID;
 
             jobsProj.Tasks = new List<Task>() { task1, task2, task3, task4, task5};
 
