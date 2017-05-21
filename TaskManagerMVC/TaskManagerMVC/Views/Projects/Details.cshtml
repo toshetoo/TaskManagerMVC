@@ -1,0 +1,30 @@
+﻿@model TaskManagerMVC.Models.Project
+
+<div>
+    <h4>@Model.Name </h4>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "List")
+    <hr />
+    <div class="info">
+        <div class="row">
+            Admin: <span>@Model.ProjectAdmin.FirstName @Model.ProjectAdmin.LastName</span>
+        </div>
+        <hr />
+        <div class="row">
+            Assigned users: 
+            @foreach(var user in Model.AssignedUsers)
+            {
+                <span>@user.FirstName @user.LastName</span>
+            }
+        </div>
+        <hr />
+        <div class="row">
+            Tasks:
+            @foreach (var task in Model.Tasks)
+            {
+                <span>@task.Title</span>
+            }
+        </div>
+
+    </div>
+</div>

@@ -32,9 +32,30 @@ namespace TaskManagerMVC.Controllers
             return View(model);
         }
 
+        public ActionResult Details(string id)
+        {
+            Project project = new Project();
+            ProjectsService projectsService = new ProjectsService();
+
+            if (id != null)
+            {
+                project = projectsService.GetById(id);
+                if (project == null)
+                {
+                    return RedirectToAction("List");
+                }
+            }
+            else
+            {
+                return RedirectToAction("List");
+            }
+
+            return View(project);
+        }
+
         public ActionResult Edit(string id)
         {
-           Project project = new Project();
+            Project project = new Project();
             ProjectsService projectsService = new ProjectsService();
             ProjectEditVM model = new ProjectEditVM();
 
