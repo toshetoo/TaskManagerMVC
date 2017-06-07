@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -77,17 +78,18 @@ namespace TaskManagerMVC.Controllers
             model.AssignedUSers = project.AssignedUsers;
             model.ProjectAdminID = project.ProjectAdminID;
             model.Tasks = project.Tasks;
+            model.ImageURL = project.ImageURL;
 
             return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit()
+        public ActionResult Edit(ProjectEditVM model)
         {
-            ProjectEditVM model = new ProjectEditVM();
+            ProjectEditVM mymodel = new ProjectEditVM();
+            TryUpdateModel(mymodel);
             ProjectsService projectsService = new ProjectsService();
-            TryUpdateModel(model);
 
             if (!ModelState.IsValid)
             {
@@ -108,31 +110,32 @@ namespace TaskManagerMVC.Controllers
                 }
             }
 
-            //if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
-            //{
-            //    var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
+            if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+            {
+                var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
 
-            //    if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
-            //    {
-            //        ModelState.AddModelError(string.Empty, "Wrong image format.");
-            //    }
-            //    else
-            //    {
-            //        string filePath = Server.MapPath("~/Uploads/");
-            //        model.ImageURL = model.ImageUpload.FileName;
-            //        model.ImageUpload.SaveAs(filePath + model.ImageURL);
-            //    }
-            //}
-            //else
-            //{
-            //    model.ImageURL = "default.jpg";
-            //}
+                if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong image format.");
+                }
+                else
+                {
+                    string filePath = Server.MapPath("~/Uploads/");
+                    model.ImageURL = model.ImageUpload.FileName;
+                    model.ImageUpload.SaveAs(filePath + model.ImageURL);
+                }
+            }
+            else
+            {
+                model.ImageURL = "default.jpg";
+            }
 
             project.ID = model.ID;
             project.Name = model.Name;
             project.ProjectAdminID = model.ProjectAdminID;
             project.AssignedUsers = model.AssignedUSers;
             project.Tasks = model.Tasks;
+            project.ImageURL = model.ImageURL;
 
             projectsService.Update(project);
 

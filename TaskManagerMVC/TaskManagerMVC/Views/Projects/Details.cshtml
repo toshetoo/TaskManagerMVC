@@ -4,6 +4,8 @@
     <h4>@Model.Name </h4>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
     @Html.ActionLink("Back to List", "List")
+
+    <img class="photo" src="~/Uploads/@Model.ImageURL" />
     <hr />
     <div class="info">
         <div class="row">
@@ -12,9 +14,11 @@
         <hr />
         <div class="row">
             Assigned users: 
-            @foreach(var user in Model.AssignedUsers)
+            @foreach (var user in Model.AssignedUsers)
             {
-                <span>@user.FirstName @user.LastName</span>
+                <div>
+                    @Html.ActionLink(user.FirstName + " " + user.LastName, "Details", "User", new { id = user.ID }, null)
+                </div>
             }
         </div>
         <hr />
@@ -22,7 +26,9 @@
             Tasks:
             @foreach (var task in Model.Tasks)
             {
-                <span>@task.Title</span>
+                <div>
+                    @Html.ActionLink(task.Title, "Details", "Task", new { id = task.ID }, null)
+                </div>                
             }
         </div>
 
