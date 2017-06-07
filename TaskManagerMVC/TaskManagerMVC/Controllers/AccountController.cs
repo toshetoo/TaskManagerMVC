@@ -5,7 +5,6 @@ using System.Web;
 using System.Web.Mvc;
 using TaskManagerMVC.Filters;
 using TaskManagerMVC.Models;
-using TaskManagerMVC.Services;
 using TaskManagerMVC.Services.ModelServices;
 using TaskManagerMVC.Utils;
 using TaskManagerMVC.ViewModels.AccountVM;
@@ -38,7 +37,7 @@ namespace TaskManagerMVC.Controllers
             u.Email = model.Email;
 
             usersService.Insert(u);
-            EmailService.SendRegistrationEmail(u);
+            TaskManagerMVC.Services.EmailService.SendRegistrationEmail(u);
             return RedirectToAction("Login");
         }
         public ActionResult Verify(string guid)
@@ -93,7 +92,7 @@ namespace TaskManagerMVC.Controllers
             service.Update(user);
             ViewBag.Message = "Email with instructions has been sent!";
 
-            EmailService.SendPasswordResetEmail(user);
+            TaskManagerMVC.Services.EmailService.SendPasswordResetEmail(user);
 
             return View();
         }
@@ -110,8 +109,8 @@ namespace TaskManagerMVC.Controllers
             AccountLoginVM model = new AccountLoginVM();
             TryUpdateModel(model);
 
-            AuthenticatonService.AuthenticateUser(model.Username, model.Password);
-            if (AuthenticatonService.LoggedUser != null)
+            TaskManagerMVC.Services.AuthenticatonService.AuthenticateUser(model.Username, model.Password);
+            if (TaskManagerMVC.Services.AuthenticatonService.LoggedUser != null)
             {
                 if (!String.IsNullOrEmpty(model.RedirectUrl))
                     return Redirect(model.RedirectUrl);
@@ -122,7 +121,7 @@ namespace TaskManagerMVC.Controllers
         }
         public ActionResult Logout()
         {
-            AuthenticatonService.Logout();
+            TaskManagerMVC.Services.AuthenticatonService.Logout();
 
             return RedirectToAction("Login");
         }
