@@ -13,7 +13,7 @@ namespace TaskManagerMVC.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
-            AutomaticMigrationDataLossAllowed = true;
+            AutomaticMigrationDataLossAllowed = true;            
         }
 
         protected override void Seed(TaskManagerMVC.TaskManagerContext context)
@@ -23,8 +23,8 @@ namespace TaskManagerMVC.Migrations
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method 
             //  to avoid creating duplicate seed data. E.g.
 
-            context.Database.Delete();
-            context.Database.Create();
+            //context.Database.Delete();
+            //context.Database.Create();
 
             //USERS
             User admin = new User() { FirstName = "Admin", LastName = "Admin", Email = "admin@taskmanager.com", Username = "admin", Password = HashUtils.CreateHashCode("adminpass"), IsAdmin = true, ID = Guid.NewGuid().ToString() };
