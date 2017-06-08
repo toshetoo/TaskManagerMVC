@@ -6,12 +6,11 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>ProjectEditVM</h4>
+        <h4>Edit project</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
         @Html.HiddenFor(model => model.ImageURL)
-        @Html.HiddenFor(model => model.ProjectAdminID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -21,12 +20,24 @@
             </div>
         </div>
 
-        <div class="right">
-            <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
+        <div class="form-group">
+            @Html.LabelFor(model => model.ProjectAdminID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.ProjectAdminID, Model.Users, "Select asignee", new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProjectAdminID, "", new { @class = "text-danger" })
+            </div>
+        </div>
 
-            @Html.TextBoxFor(model => model.ImageUpload, new { htmlAttributes = new { @class = "form-control", @id = "image-upload" }, type = "file" })
-            <label>You can upload images with .jpg extension</label>
-
+        <div class="form-group">
+            <label class="control-label col-lg-2">Image </label>
+            @if (Model.ImageURL != null)
+            {
+                <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
+            }
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.ImageUpload, new { @class = "form-control", @id = "image-upload", @type = "file" })
+                <label>You can upload images with .jpg extension</label>
+            </div>
         </div>
 
         <div class="form-group">

@@ -20,7 +20,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ProjectID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.ProjectID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.ProjectID, Model.Projects, "Select project", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ProjectID, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -28,10 +28,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.AsigneeID, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.AsigneeID, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.AsigneeID, Model.Users, "Select asignee", new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.AsigneeID, "", new { @class = "text-danger" })
             </div>
         </div>
+
 
         <div class="form-group">
             @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -58,20 +59,16 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.CreationDate, htmlAttributes: new { @class = "control-label col-md-2" })
+            <label class="control-label col-lg-2">Image </label>
+            @if (Model.ImageURL != "")
+            {
+                <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
+            }      
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CreationDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreationDate, "", new { @class = "text-danger" })
+                @Html.TextBoxFor(model => model.ImageUpload, new { @class = "form-control", @id = "image-upload", @type = "file" })
+                <label>You can upload images with .jpg extension</label>
             </div>
-        </div>
-
-        <div class="right">
-            <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
-
-            @Html.TextBoxFor(model => model.ImageUpload, new { htmlAttributes = new { @class = "form-control", @id = "image-upload" }, type = "file" })
-            <label>You can upload images with .jpg extension</label>
-
-        </div>
+         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

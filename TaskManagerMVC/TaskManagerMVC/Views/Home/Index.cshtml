@@ -1,31 +1,97 @@
-﻿@{
+﻿@using TaskManagerMVC.Services;
+@{
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
-
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+<div id="content">
+    <div class="outer">
+        <div class="inner bg-light lter">
+        @if (AuthenticatonService.LoggedUser == null)
+        {
+            <div class="text-center">
+                <h1>Task Manager</h1>
+                <h4>by Todor Ivanov</h4>
+            </div>
+        }
+        else
+        {
+            <div class="text-center">
+                <ul class="stats_box">
+                    <li>
+                        <div class="sparkline bar_week"><canvas width="47" height="40" style="display: inline-block; width: 47px; height: 40px; vertical-align: top;"></canvas></div>
+                        <div class="stat_text">
+                            <strong>2.345</strong> Weekly Visit
+                            <span class="percent down"> <i class="fa fa-caret-down"></i> -16%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sparkline line_day"><canvas width="36" height="40" style="display: inline-block; width: 36px; height: 40px; vertical-align: top;"></canvas></div>
+                        <div class="stat_text">
+                            <strong>165</strong> Daily Visit
+                            <span class="percent up"> <i class="fa fa-caret-up"></i> +23%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sparkline pie_week"><canvas width="40" height="40" style="display: inline-block; width: 40px; height: 40px; vertical-align: top;"></canvas></div>
+                        <div class="stat_text">
+                            <strong>$2 345.00</strong> Weekly Sale
+                            <span class="percent"> 0%</span>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="sparkline stacked_month"><canvas width="43" height="40" style="display: inline-block; width: 43px; height: 40px; vertical-align: top;"></canvas></div>
+                        <div class="stat_text">
+                            <strong>$678.00</strong> Monthly Sale
+                            <span class="percent down"> <i class="fa fa-caret-down"></i> -10%</span>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="text-center">
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-bolt fa-2x"></i>
+                    <span>default</span>
+                    <span class="label label-default">2</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-check fa-2x"></i>
+                    <span>danger</span>
+                    <span class="label label-danger">2</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-building-o fa-2x"></i>
+                    <span>No Label</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-envelope fa-2x"></i>
+                    <span>success</span>
+                    <span class="label label-success">-456</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-signal fa-2x"></i>
+                    <span>warning</span>
+                    <span class="label label-warning">+25</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-external-link fa-2x"></i>
+                    <span>π</span>
+                    <span class="label btn-metis-2">3.14159265</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-lemon-o fa-2x"></i>
+                    <span>é</span>
+                    <span class="label btn-metis-4">2.71828</span>
+                </a>
+                <a class="quick-btn" href="#">
+                    <i class="fa fa-glass fa-2x"></i>
+                    <span>φ</span>
+                    <span class="label btn-metis-3">1.618</span>
+                </a>
+            </div>
+            <hr>
+        }        
+            
+        </div>
     </div>
 </div>

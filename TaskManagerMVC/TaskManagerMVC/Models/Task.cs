@@ -25,6 +25,8 @@ namespace TaskManagerMVC.Models
 
     public enum TaskStatus
     {
-        TODO, INPROGRESS, DONE
+        TODO,
+        INPROGRESS,
+        DONE
     }
 }

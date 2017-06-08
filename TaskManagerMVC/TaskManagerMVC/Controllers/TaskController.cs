@@ -60,6 +60,9 @@ namespace TaskManagerMVC.Controllers
             model.ImageURL = task.ImageURL;
             model.AsigneeID = task.AssigneeID;
 
+            model.Users = GetUsers();
+            model.Projects = GetProjects();
+
             return View(model);
         }
 
@@ -69,7 +72,9 @@ namespace TaskManagerMVC.Controllers
         {
             TaskEditVM model = new TaskEditVM();
             TasksService tasksService = new TasksService();
+            
             TryUpdateModel(model);
+            bool toInsert = model.ID == null;
 
             if (!ModelState.IsValid)
             {
@@ -77,9 +82,11 @@ namespace TaskManagerMVC.Controllers
             }
 
             Models.Task task;
-            if (model.ID == String.Empty)
+            if (model.ID == null)
             {
                 task = new Models.Task();
+                model.ID = Guid.NewGuid().ToString();
+                model.CreationDate = DateTime.Now.ToString();
             }
             else
             {
@@ -117,8 +124,12 @@ namespace TaskManagerMVC.Controllers
             task.CreationDate = model.CreationDate;
             task.Content = model.Content;
             task.AssigneeID = model.AsigneeID;
+            task.ImageURL = model.ImageURL;
 
-            tasksService.Update(task);
+            if(toInsert)
+                tasksService.Insert(task);
+            else
+                tasksService.Update(task);
 
             return RedirectToAction("List");
         }
@@ -133,5 +144,30 @@ namespace TaskManagerMVC.Controllers
             }
             return RedirectToAction("List");
         }
+
+        private IEnumerable<SelectListItem> GetUsers()
+        {
+            var users = new UsersService().GetAll()
+                .Select(h => new SelectListItem
+                {
+                    Value = h.ID.ToString(),
+                    Text = h.FirstName + " " + h.LastName
+                });
+
+            return new SelectList(users, "Value", "Text");
+        }
+
+        private IEnumerable<SelectListItem> GetProjects()
+        {
+            var projects = new ProjectsService().GetAll()
+                .Select(p => new SelectListItem
+                {
+                    Value = p.ID.ToString(),
+                    Text = p.Name
+                });
+
+            return new SelectList(projects, "Value", "Text");
+        }
+
     }
 }

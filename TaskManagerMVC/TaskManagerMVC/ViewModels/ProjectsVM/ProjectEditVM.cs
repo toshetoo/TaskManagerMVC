@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using TaskManagerMVC.Models;
 
 namespace TaskManagerMVC.ViewModels.ProjectsVM
@@ -15,5 +16,7 @@ namespace TaskManagerMVC.ViewModels.ProjectsVM
         public string ImageURL { get; set; }
         public HttpPostedFileBase ImageUpload { get; set; }
         public List<Task> Tasks { get; set; }
+
+        public IEnumerable<SelectListItem> Users { get; set; }
     }
 }

@@ -72,6 +72,7 @@ namespace TaskManagerMVC.Controllers
             UserEditVM model = new UserEditVM();
             UsersService usersService = new UsersService();
             TryUpdateModel(model);
+            bool toInsert = model.ID == null;
 
             if (!ModelState.IsValid)
             {
@@ -79,9 +80,10 @@ namespace TaskManagerMVC.Controllers
             }
 
             User user;
-            if (model.ID == String.Empty)
+            if (model.ID == null)
             {
                 user = new User();
+                model.ID = Guid.NewGuid().ToString();
             }
             else
             {
@@ -99,7 +101,10 @@ namespace TaskManagerMVC.Controllers
             user.Username = model.Username;
             user.Email = model.Email;
 
-            usersService.Update(user);
+            if(toInsert)
+                usersService.Insert(user);
+            else
+                usersService.Update(user);
 
             return RedirectToAction("List");
         }

@@ -1,13 +1,16 @@
 ﻿@model TaskManagerMVC.Models.Project
 
 <div>
-    <h4>@Model.Name </h4>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
-    @Html.ActionLink("Back to List", "List")
-
-    <img class="photo" src="~/Uploads/@Model.ImageURL" />
+    <h4 class="pull-left" style="width:100px">@Model.Name </h4>
+    <div class="pull-left" style="margin-top: 10px;">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+        @Html.ActionLink("Back to List", "List")
+    </div> 
+    <div class="clearfix"></div>
+    <img class="photo" src="~/Uploads/@Model.ImageURL" style="max-width:300px"/>
+      
     <hr />
-    <div class="info">
+    <div class="info" style="margin-left: 30px;">
         <div class="row">
             Admin: <span>@Model.ProjectAdmin.FirstName @Model.ProjectAdmin.LastName</span>
         </div>

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using TaskManagerMVC.Models;
 
 namespace TaskManagerMVC.ViewModels.TaskVM
@@ -10,7 +11,9 @@ namespace TaskManagerMVC.ViewModels.TaskVM
     public class TaskEditVM
     {        
         public string ID { get; set; }
+        [Display(Name = "Project")]
         public string ProjectID { get; set; }
+        [Display(Name = "Asignee")]
         public string AsigneeID { get; set; }
 
         [Required(ErrorMessage = "Please enter a title!")]
@@ -27,5 +30,9 @@ namespace TaskManagerMVC.ViewModels.TaskVM
         public string CreationDate { get; set; }
         public string ImageURL { get; set; }
         public HttpPostedFileBase ImageUpload { get; set; }
+
+        public IEnumerable<SelectListItem> Users { get; set; }
+
+        public IEnumerable<SelectListItem> Projects { get; set; }
     }
 }

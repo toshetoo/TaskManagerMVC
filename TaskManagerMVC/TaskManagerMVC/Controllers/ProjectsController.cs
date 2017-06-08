@@ -54,7 +54,7 @@ namespace TaskManagerMVC.Controllers
             return View(project);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id = null)
         {
             Project project = new Project();
             ProjectsService projectsService = new ProjectsService();
@@ -80,6 +80,8 @@ namespace TaskManagerMVC.Controllers
             model.Tasks = project.Tasks;
             model.ImageURL = project.ImageURL;
 
+            model.Users = GetUsers();
+
             return View(model);
         }
 
@@ -88,6 +90,7 @@ namespace TaskManagerMVC.Controllers
         public ActionResult Edit(ProjectEditVM model)
         {
             ProjectsService projectsService = new ProjectsService();
+            bool toInsert = model.ID == null;
 
             if (!ModelState.IsValid)
             {
@@ -95,9 +98,10 @@ namespace TaskManagerMVC.Controllers
             }
 
             Project project;
-            if (model.ID == String.Empty)
+            if (model.ID == null)
             {
                 project = new Project();
+                model.ID = Guid.NewGuid().ToString();
             }
             else
             {
@@ -135,7 +139,10 @@ namespace TaskManagerMVC.Controllers
             project.Tasks = model.Tasks;
             project.ImageURL = model.ImageURL;
 
-            projectsService.Update(project);
+            if (toInsert)
+                projectsService.Insert(project);
+            else
+                projectsService.Update(project);
 
             return RedirectToAction("List");
         }
@@ -149,6 +156,18 @@ namespace TaskManagerMVC.Controllers
                 tasksService.Delete(id);
             }
             return RedirectToAction("List");
+        }
+
+        private IEnumerable<SelectListItem> GetUsers()
+        {
+            var users = new UsersService().GetAll()
+                .Select(h => new SelectListItem
+                {
+                    Value = h.ID.ToString(),
+                    Text = h.FirstName + " " + h.LastName
+                });
+
+            return new SelectList(users, "Value", "Text");
         }
     }
 }

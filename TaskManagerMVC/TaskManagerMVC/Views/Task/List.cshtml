@@ -12,9 +12,9 @@
 
 @using (Html.BeginForm("List", "Task", FormMethod.Get))
 {
-    <div>
-        Search: @Html.TextBoxFor(model => model.Search, new { @class = "form-control" })
-        <input type="submit" value="Search" class="btn btn-primary" />
+    <div style="margin-bottom: 20px; height: 50px;">
+        @Html.TextBoxFor(model => model.Search, new { @class = "form-control pull-left", @style = "width:300px ", @placeholder = "Search..." })
+        <input type="submit" value="Search" class="btn btn-primary pull-left" style="margin-left: 20px;" />
     </div>
 }
 <table class="table">
