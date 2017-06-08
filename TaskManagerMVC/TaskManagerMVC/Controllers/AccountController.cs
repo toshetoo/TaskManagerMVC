@@ -43,11 +43,11 @@ namespace TaskManagerMVC.Controllers
         public ActionResult Verify(string guid)
         {
             AccountRegisterVM model = new AccountRegisterVM();
-
+            
             UsersService usersService = new UsersService();
             User u = new User();
             u = usersService.GetByGuid(guid);
-
+            
             model.ID = u.ID;
             model.FirstName = u.FirstName;
             model.LastName = u.LastName;

@@ -26,6 +26,30 @@ namespace TaskManagerMVC
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            bundles.Add(new StyleBundle("~/bundles/themeStyle").Include(
+                       "~/Content/assets/css/main.css",
+                      "~/Content/assets/css/style-switcher.css",
+                      "~/Content/assets/css/theme.css",
+                      "~/Content/assets/css/countdown.css",
+                      "~/Content/assets/lib/bootstrap/css/bootstrap.css",
+                      "~/Content/assets/lib/font-awesome/css/font-awesome.css",
+                      "~/Content/assets/lib/metismenu/metisMenu.css",
+                      "~/Content/assets/lib/onoffcanvas/onoffcanvas.css",
+                      "~/Content/assets/lib/animate.css/animate.css"));
+            
+            bundles.Add(new ScriptBundle("~/bundles/themeScripts").Include(
+                "~/Content/assets/lib/jquery/jquery.js",
+                "~/Content/assets/lib/bootstrap/js/bootstrap.js",
+                "~/Content/assets/lib/metismenu/metisMenu.js",
+                "~/Content/assets/lib/onoffcanvas/onoffcanvas.js",
+                "~/Content/assets/lib/screenfull/screenfull.js",
+                       "~/Content/assets/js/app.js",
+                      "~/Content/assets/js/core.js",
+                      "~/Content/assets/js/countdown.js",
+                      "~/Content/assets/css/style-switcher.js"));
+
+            
         }
     }
 }
