@@ -1,7 +1,7 @@
 ﻿@model TaskManagerMVC.ViewModels.ProjectsVM.ProjectEditVM
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Projects", null, FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
@@ -10,6 +10,8 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ID)
+        @Html.HiddenFor(model => model.ImageURL)
+        @Html.HiddenFor(model => model.ProjectAdminID)
 
         <div class="form-group">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })

@@ -8,12 +8,12 @@ namespace TaskManagerMVC.ViewModels.ProjectsVM
 {
     public class ProjectEditVM
     {
-        public List<User> AssignedUSers { get; internal set; }
-        public string ID { get; internal set; }
-        public string Name { get; internal set; }
-        public string ProjectAdminID { get; internal set; }
+        public List<User> AssignedUSers { get; set; }
+        public string ID { get; set; }
+        public string Name { get; set; }
+        public string ProjectAdminID { get; set; }
         public string ImageURL { get; set; }
         public HttpPostedFileBase ImageUpload { get; set; }
-        public List<Task> Tasks { get; internal set; }
+        public List<Task> Tasks { get; set; }
     }
 }

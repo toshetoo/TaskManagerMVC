@@ -87,8 +87,6 @@ namespace TaskManagerMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(ProjectEditVM model)
         {
-            ProjectEditVM mymodel = new ProjectEditVM();
-            TryUpdateModel(mymodel);
             ProjectsService projectsService = new ProjectsService();
 
             if (!ModelState.IsValid)
