@@ -138,6 +138,7 @@ namespace TaskManagerMVC.Controllers
             project.AssignedUsers = model.AssignedUSers;
             project.Tasks = model.Tasks;
             project.ImageURL = model.ImageURL;
+            project.ImageURL = "http://rojo-studio.com/wp-content/uploads/project-img-5.jpg?x33064";
 
             if (toInsert)
                 projectsService.Insert(project);
