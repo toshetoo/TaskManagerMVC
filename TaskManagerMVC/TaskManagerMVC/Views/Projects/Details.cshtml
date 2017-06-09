@@ -7,7 +7,14 @@
         @Html.ActionLink("Back to List", "List")
     </div> 
     <div class="clearfix"></div>
-    <img class="photo" src="~/Uploads/@Model.ImageURL" style="max-width:300px"/>
+    @if (!String.IsNullOrEmpty(Model.ImageURL))
+            {
+        <img class="photo" src="@Model.ImageURL" alt="Image" style="max-width:100px; max-height: 100px;" />
+    }
+    else
+    {
+        <img class="photo" src="http://cipottawa.com/wp-content/themes/aaika/assets/images/default.jpg" alt="Image" style="max-width:100px; max-height: 100px;" />
+    }
       
     <hr />
     <div class="info" style="margin-left: 30px;">

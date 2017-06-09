@@ -40,38 +40,35 @@
         <th>
             Creation Date
         </th>
-        <th></th>
     </tr>
-
-@foreach (var item in Model.Tasks) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Project.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Author.FirstName) @Html.DisplayFor(modelItem => item.Author.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Assignee.FirstName) @Html.DisplayFor(modelItem => item.Assignee.LastName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Content)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreationDate)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
-
 </table>
+
+<div style="margin: 50px;">
+    @foreach (var item in Model.Tasks)
+    {
+
+        <div class="text-center" style="float: left; width:300px; height: 400px; border:1px solid black; margin:10px; padding: 10px;">
+            <h1>@Html.DisplayFor(modelItem => item.Title)</h1>
+            <h5><strong>Status:</strong> @Html.DisplayFor(modelItem => item.Status)</h5>
+            @if (!String.IsNullOrEmpty(item.ImageURL))
+                {
+                <img class="photo" src="@item.ImageURL" alt="Image" style="max-width:100px; max-height: 100px;" />
+            }
+            else
+            {
+                <img class="photo" src="http://cipottawa.com/wp-content/themes/aaika/assets/images/default.jpg" alt="Image" style="max-width:100px; max-height: 100px;" />
+            }
+
+            <div><strong>Created by:</strong> @Html.DisplayFor(modelItem => item.Author.FirstName) @Html.DisplayFor(modelItem => item.Author.LastName) </div>
+            <div><strong>Assignee:</strong> @Html.DisplayFor(modelItem => item.Assignee.FirstName) @Html.DisplayFor(modelItem => item.Assignee.LastName)</div>
+            <div><strong>Project:</strong> @Html.DisplayFor(modelItem => item.Project.Name)</div>
+            
+            <div><strong>Content:</strong> @Html.DisplayFor(modelItem => item.Content)</div>
+            <div><strong>Created:</strong> @Html.DisplayFor(modelItem => item.CreationDate)</div>
+            <div>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </div>
+        </div>
+    }
+</div>

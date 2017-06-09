@@ -95,25 +95,25 @@ namespace TaskManagerMVC.Controllers
                 }
             }
 
-            if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
-            {
-                var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
+            //if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+            //{
+            //    var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
 
-                if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
-                {
-                    ModelState.AddModelError(string.Empty, "Wrong image format.");
-                }
-                else
-                {
-                    string filePath = Server.MapPath("~/Uploads/");
-                    model.ImageURL = model.ImageUpload.FileName;
-                    model.ImageUpload.SaveAs(filePath + model.ImageURL);
-                }
-            }
-            else
-            {
-                model.ImageURL = "default.jpg";
-            }
+            //    if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
+            //    {
+            //        ModelState.AddModelError(string.Empty, "Wrong image format.");
+            //    }
+            //    else
+            //    {
+            //        string filePath = Server.MapPath("~/Uploads/");
+            //        model.ImageURL = model.ImageUpload.FileName;
+            //        model.ImageUpload.SaveAs(filePath + model.ImageURL);
+            //    }
+            //}
+            //else
+            //{
+            //    model.ImageURL = "default.jpg";
+            //}
 
             user.ID = model.ID;
             user.FirstName = model.FirstName;
