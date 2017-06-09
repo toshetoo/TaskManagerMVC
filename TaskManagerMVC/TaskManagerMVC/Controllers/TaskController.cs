@@ -32,7 +32,7 @@ namespace TaskManagerMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id=null)
         {
             Models.Task task = new Models.Task();
             TasksService tasksService = new TasksService();
@@ -49,6 +49,7 @@ namespace TaskManagerMVC.Controllers
             else
             {
                 task = new Models.Task();
+                model.ID = Guid.NewGuid().ToString();
             }
 
             model.ID = task.ID;

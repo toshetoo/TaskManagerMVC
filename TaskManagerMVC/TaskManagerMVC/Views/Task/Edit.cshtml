@@ -60,10 +60,10 @@
 
         <div class="form-group">
             <label class="control-label col-lg-2">Image </label>
-            @if (Model.ImageURL != "")
+            @if (!String.IsNullOrEmpty(Model.ImageURL))
             {
                 <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
-            }      
+            }
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.ImageUpload, new { @class = "form-control", @id = "image-upload", @type = "file" })
                 <label>You can upload images with .jpg extension</label>

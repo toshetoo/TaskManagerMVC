@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.IO;
 using System.Web;
 using System.Web.Mvc;
 using TaskManagerMVC.Models;
@@ -36,13 +37,13 @@ namespace TaskManagerMVC.Controllers
             return View(model);
         }
 
-        public ActionResult Edit(string id)
+        public ActionResult Edit(string id = null)
         {
             User user = new User();
             UsersService userService = new UsersService();
             UserEditVM model = new UserEditVM();
 
-            if (id != String.Empty)
+            if (id != null)
             {
                 user = userService.GetById(id);
                 if (user == null)
@@ -94,12 +95,33 @@ namespace TaskManagerMVC.Controllers
                 }
             }
 
+            if (model.ImageUpload != null && model.ImageUpload.ContentLength > 0)
+            {
+                var imageExtension = Path.GetExtension(model.ImageUpload.FileName);
+
+                if (String.IsNullOrEmpty(imageExtension) || !imageExtension.Equals(".jpg", StringComparison.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError(string.Empty, "Wrong image format.");
+                }
+                else
+                {
+                    string filePath = Server.MapPath("~/Uploads/");
+                    model.ImageURL = model.ImageUpload.FileName;
+                    model.ImageUpload.SaveAs(filePath + model.ImageURL);
+                }
+            }
+            else
+            {
+                model.ImageURL = "default.jpg";
+            }
+
             user.ID = model.ID;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             user.Password = model.Password;
             user.Username = model.Username;
             user.Email = model.Email;
+            user.ImageUrl = model.ImageURL;
 
             if(toInsert)
                 usersService.Insert(user);

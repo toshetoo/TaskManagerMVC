@@ -31,5 +31,8 @@ namespace TaskManagerMVC.ViewModels.UserVM
         [RegularExpression(@"^([A-z]+)$", ErrorMessage = "Name should consist only letters!")]
         [StringLength(50, MinimumLength = 3, ErrorMessage = "Your name should contain between 3 and 50 characters")]
         public string LastName { get; set; }
+
+        public string ImageURL { get; set; }
+        public HttpPostedFileBase ImageUpload { get; set; }
     }
 }

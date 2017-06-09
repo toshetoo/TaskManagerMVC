@@ -30,7 +30,7 @@
 
         <div class="form-group">
             <label class="control-label col-lg-2">Image </label>
-            @if (Model.ImageURL != null)
+            @if (!String.IsNullOrEmpty(Model.ImageURL))
             {
                 <img class="photo" src="~/Uploads/@Model.ImageURL" alt="Image" />
             }
