@@ -37,10 +37,10 @@
     @foreach (var item in Model.Users)
     {
 
-        <div class="text-center" style="float: left; width:300px; height: 200px; border:1px solid black; margin:10px; padding: 10px;">
+        <div class="text-center" style="float: left; width:300px; height: 300px; border:1px solid black; margin:10px; padding: 10px;">
             @if (!String.IsNullOrEmpty(item.ImageUrl))
             {
-                <img class="photo" src="@item.ImageUrl" alt="Image" style="max-width:100px; max-height: 100px;" />
+                <img class="photo" src="@item.ImageUrl" alt="Image" style="max-width:200px; max-height: 200px;" />
             }
             else
             {
